@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О себе - Николай Осипенко</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Николай Осипенко</h1>
+        <p>Персональная страница: Космический энтузиаст и астроном-любитель</p>
+        <button type="button" id="theme-btn" class="action-btn">Светлая тема</button>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#about">О себе</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#objects">Объекты</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>О себе</h2>
+            <div class="photo-wrapper">
+                <img src="images/Nikolay_Osipenko.jpg" 
+                     alt="Портрет Николая Осипенко" 
+                     width="200" 
+                     height="200"
+                     class="img">
+                <span class="badge">Астроном</span>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Мои космические навыки</h2>
+            <ul>
+                <li>Работа с любительским зеркальным телескопом системы Ньютона</li>
+                <li>Ориентирование по созвездиям и картам звёздного неба</li>
+                <li>Астрофотография и постобработка снимков глубокого космоса</li>
+                <li>3D-моделирование орбит и рельефа планет</li>
+            </ul>
+        </section>
+
+        <section id="objects">
+            <h2>Наблюдаемые объекты</h2>
+            <div class="objects-controls">
+                <button type="button" id="add-object-btn" class="action-btn">Добавить объект</button>
+                <button type="button" id="toggle-objects-btn" class="action-btn">Скрыть объекты</button>
+            </div>
+            <div id="cards-container" class="cards-container">
+                <!-- Карточки создаются и восстанавливаются через script.js -->
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Астрономический дашборд</h2>
+            <div class="grid-container">
+                <article class="grid-item">
+                    <h4>M42</h4>
+                    <p>Туманность Ориона</p>
+                </article>
+                <article class="grid-item">
+                    <h4>M31</h4>
+                    <p>Галактика Андромеды</p>
+                </article>
+                <article class="grid-item">
+                    <h4>M45</h4>
+                    <p>Скопление Плеяды</p>
+                </article>
+                <article class="grid-item">
+                    <h4>Марс</h4>
+                    <p>Полярные шапки</p>
+                </article>
+                <article class="grid-item">
+                    <h4>Солнце</h4>
+                    <p>Группы солнечных пятен</p>
+                </article>
+                <article class="grid-item">
+                    <h4>МКС</h4>
+                    <p>Транзит по диску Луны</p>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <h2>Вдохновляющие космические миссии</h2>
+            <p>Узнать больше о космосе можно на <a href="https://ru.wikipedia.org/wiki/Космос" target="_blank">Википедии</a>.</p>
+            <ol>
+                <li><strong>«Джеймс Уэбб»</strong> - исследование самых ранних галактик Вселенной.</li>
+                <li><strong>«Вояджер-1»</strong> - первый рукотворный аппарат, вышедший в межзвёздное пространство.</li>
+                <li><strong>Марсоход «Персеверанс»</strong> - поиск следов древней жизни на Красной планете.</li>
+                <li><strong>«Артемида»</strong> - программа по возвращению человека на Луну.</li>
+            </ol>
+        </section>
+
+        <aside>
+            <h2>Любимое созвездие: Орион</h2>
+            <p>Орион - самое красивое созвездие зимнего неба. Больше всего меня восхищает яркая звезда Бетельгейзе и знаменитая Большая туманность Ориона.</p>
+        </aside>
+
+        <section id="contact" class="form-section">
+            <h2>Форма обратной связи</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="userName">Ваше имя:</label>
+                    <input type="text" id="userName" name="userName" placeholder="Ваше имя" required>
+                </div>
+                <div>
+                    <label for="userEmail">Ваш Email:</label>
+                    <input type="email" id="userEmail" name="userEmail" placeholder="Ваш Email" required>
+                </div>
+                <div>
+                    <label for="userMessage">Ваше сообщение или вопрос:</label>
+                    <textarea id="userMessage" name="userMessage" rows="4" placeholder="Ваше сообщение или вопрос о космосе..." required></textarea>
+                </div>
+                <div>
+                    <button type="submit">Отправить</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Николай Осипенко. Все права защищены.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
