@@ -8,7 +8,7 @@
     --main-font: Arial, sans-serif;
 }
 
-/* Светлая тема для 5-й лабораторной */
+
 body.light-theme {
     --bg-color: #f4f6f9;
     --text-color: #1c2541;
@@ -121,7 +121,7 @@ a:active {
     padding: 8px 16px;
 }
 
-/* Выравнивание SVG-иконки и текста в кнопке темы */
+/* класс .theme-btn, чтобы иконка и текст стояли ровно на одной линии, а не съезжали */
 .theme-btn {
     display: inline-flex;
     align-items: center;
