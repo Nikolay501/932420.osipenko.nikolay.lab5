@@ -1,5 +1,9 @@
 // Поиск элементов через getElementById, querySelector, querySelectorAll
 let themeBtn = document.getElementById("theme-btn");
+let themeText = document.getElementById("theme-text");
+let sunIcon = document.getElementById("sun-icon");
+let moonIcon = document.getElementById("moon-icon");
+
 let addObjectBtn = document.getElementById("add-object-btn");
 let toggleObjectsBtn = document.getElementById("toggle-objects-btn");
 let cardsContainer = document.getElementById("cards-container");
@@ -7,14 +11,14 @@ let cardsContainer = document.getElementById("cards-container");
 let objectsHeading = document.querySelector("#objects h2");
 let navLinks = document.querySelectorAll(".nav-menu a");
 
-// Обработка ошибок - проверка существования элементов
+// Обработка ошибок -  проверка существования элементов
 if (!themeBtn || !addObjectBtn || !toggleObjectsBtn || !cardsContainer || !objectsHeading) {
     console.error("Ошибка: не удалось найти необходимые элементы на странице!");
 } else {
     console.log("Все основные элементы найдены. Ссылок в меню: " + navLinks.length);
 }
 
-// Начальный список объектов (если в localStorage ещё ничего нет).
+// Начальный список объектов (если в localStorage ещё ничего нет)
 let defaultObjects = [
     { name: "Юпитер", type: "Планета", brightness: "-2.5m" },
     { name: "Сатурн", type: "Планета", brightness: "0.5m" },
@@ -36,7 +40,7 @@ function saveObjects() {
     localStorage.setItem("spaceObjects", JSON.stringify(objectsList));
 }
 
-// создание и удаление карточек, изменение текста, атрибутов и классов
+// Создание и удаление карточек, изменение текста, атрибутов и классов
 function renderObjects() {
     if (!cardsContainer) return;
 
@@ -52,16 +56,19 @@ function renderObjects() {
         card.setAttribute("data-index", i);
         card.setAttribute("title", "Космический объект: " + item.name);
 
+        // Заголовок
         let title = document.createElement("h3");
         title.textContent = item.name;
 
+        // Тип объекта
         let typeText = document.createElement("p");
         typeText.textContent = "Тип: " + item.type;
 
+        // Яркость объекта
         let brightnessText = document.createElement("p");
         brightnessText.textContent = "Яркость: " + item.brightness;
 
-        // Кнопка «Удалить»
+        // Кнопка "удалить"
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Удалить";
         deleteBtn.setAttribute("type", "button");
@@ -90,7 +97,7 @@ function renderObjects() {
     }
 }
 
-// 4. Добавление нового объекта по кнопке «Добавить объект»
+// 4. Добавление нового объекта по кнопке "Добавить объект"
 if (addObjectBtn) {
     addObjectBtn.onclick = function() {
         let name = prompt("Введите название объекта:", "Сириус");
@@ -126,27 +133,41 @@ if (toggleObjectsBtn && cardsContainer) {
     };
 }
 
-// 6. Переключение темы (светлая/тёмная) и сохранение в localStorage
+// преключение темы (светлая/тёмная) с SVG-иконками и сохранение в localStorage
+function updateThemeButton() {
+    if (!themeText || !sunIcon || !moonIcon) return;
+
+    if (document.body.classList.contains("light-theme")) {
+        // Сейчас светлая тема -> кнопка предлагает включить тёмную (луна)
+        themeText.textContent = "Тёмная тема";
+        sunIcon.classList.add("hidden");
+        moonIcon.classList.remove("hidden");
+    } else {
+        // Сейчас тёмная тема -> кнопка предлагает включить светлую (солнце)
+        themeText.textContent = "Светлая тема";
+        sunIcon.classList.remove("hidden");
+        moonIcon.classList.add("hidden");
+    }
+}
+
 let savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "light") {
     document.body.classList.add("light-theme");
-    if (themeBtn) {
-        themeBtn.textContent = "Тёмная тема";
-    }
 }
+updateThemeButton();
 
 if (themeBtn) {
     themeBtn.onclick = function() {
         document.body.classList.toggle("light-theme");
 
         if (document.body.classList.contains("light-theme")) {
-            themeBtn.textContent = "Тёмная тема";
             localStorage.setItem("theme", "light");
         } else {
-            themeBtn.textContent = "Светлая тема";
             localStorage.setItem("theme", "dark");
         }
+
+        updateThemeButton();
     };
 }
 
