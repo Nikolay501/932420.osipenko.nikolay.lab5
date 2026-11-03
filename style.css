@@ -121,7 +121,14 @@ a:active {
     padding: 8px 16px;
 }
 
-/* Класс для скрытия блоков */
+/* Выравнивание SVG-иконки и текста в кнопке темы */
+.theme-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Класс для скрытия блоков и иконок */
 .hidden {
     display: none !important;
 }
